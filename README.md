@@ -141,7 +141,7 @@ Built collaboratively as a group project under the **ALIWA Data Analytics Traini
 ## 📬 Connect
 
 **John Ohaka**
-- 🔗 [LinkedIn](https://www.linkedin.com/in/john-ohaka-8b1828405/)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/john-ohaka)
 - 🐙 [GitHub](https://github.com/D-Digital-Hub)
 - ✉️ johnohaka28@gmail.com
 
