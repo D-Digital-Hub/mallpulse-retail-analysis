@@ -1,4 +1,4 @@
-Use CapstoneDB
+Use mallpulse_analysis
 
 
 -- Question 1: What is the total revenue generated across all transactions?
