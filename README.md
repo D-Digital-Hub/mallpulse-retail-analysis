@@ -13,10 +13,10 @@ This was a group project. My part:
 
 ## Project structure
 ```
-mallpulse-retail-analysis/
-  └── customer_shopping_data_cleaned.xlsx
-  └── mallpulse_analysis.sql
-  └── README.md
+   mallpulse-retail-analysis/
+   ├── customer_shopping_data_cleaned.xlsx
+   ├── mallpulse_analysis.sql
+   └── README.md
 ```
 The SQL file contains the data cleaning, database design and all queries: [`mallpulse_analysis.sql`](./mallpulse_analysis.sql)
 
