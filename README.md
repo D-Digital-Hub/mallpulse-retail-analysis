@@ -25,7 +25,7 @@ The SQL file contains the data cleaning, database design and all queries: [`mall
 |---|---|
 | **Source** | [Kaggle: Customer Shopping Dataset](https://www.kaggle.com/datasets/mehmettahiraslan/customer-shopping-dataset) |
 | **File used** | Cleaned version of `customer_shopping_data.csv` |
-| **Rows** | About 99,000 transactions |
+| **Rows** | 99,457 transactions |
 | **Period** | 2021 to 2023 |
 | **Malls** | 10 shopping malls across Istanbul |
 | **License** | CC0 Public Domain |
