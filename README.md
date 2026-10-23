@@ -28,6 +28,8 @@ The SQL file contains the data cleaning, database design and all queries: [`mall
 | **Rows** | About 99,000 transactions |
 | **Period** | 2021 to 2023 |
 | **Malls** | 10 shopping malls across Istanbul |
+| **License** | CC0 Public Domain |
+| **Cleaned file** | `customer_shopping_data_cleaned.xlsx` in this repo |
 
 ### Columns
 | Column | Description |
