@@ -1,11 +1,11 @@
 Use mallpulse_analysis
 
-
+-- Note: price already holds the line total (unit price x quantity). total_amount double-counts quantity, so revenue uses price.
 -- Question 1: What is the total revenue generated across all transactions?
-select sum(total_amount) as total_revenue from orders;
+select sum(price) as total_revenue from orders;
 
 -- Question 2: Which product category generates the highest total revenue?
-select category, sum(total_amount) as total_category_revenue
+select category, sum(price) as total_category_revenue
 from orders
 group by category 
 order by total_category_revenue DESC;
@@ -17,10 +17,16 @@ group by shopping_mall
 order by total_transactions desc;
 
 -- Question 4: Who are the top 10 customers by total amount spent?
-select top 10 customer_id, sum(total_amount) as total_spendings
+select top 10 customer_id, sum(price) as total_spendings
 from orders 
 group by customer_id
 order by total_spendings desc;
+
+-- Q4b: how many customers tie at the maximum?
+SELECT price, COUNT(*) AS customers
+FROM orders
+GROUP BY price
+ORDER BY price DESC;
 
 -- Question 5: What is the most popular payment method?
 select payment_method, count(*) as frequency
@@ -29,7 +35,7 @@ group by payment_method
 order by frequency desc;
 
 -- Question 6: What is the average spending per transaction for each gender?
-select c.gender, cast(avg(o.total_amount) as decimal(10,2)) as average_spending
+select c.gender, cast(avg(o.price) as decimal(10,2)) as average_spending
 from orders o
 join customers c on o.customer_id = c.customer_id
 group by c.gender
@@ -45,13 +51,13 @@ order by [year] asc;
 
 -- Main query: Aggregate the data from the subquery
 select sub.age_group,
-	cast(avg(sub.total_amount) as decimal(10,2)) as average_spending
+	cast(avg(sub.price) as decimal(10,2)) as average_spending
 from(
 	-- Subquery: Assign age buckets to transactions
 	select 
-		o.total_amount, 
+		o.price, 
 		case 
-			when c.age < 20 then 'Teen (Below 19)'
+			when c.age < 20 then 'Teen (Below 20)'
 			when c.age between 20 and 29 then 'Young Adult (20-29)'
 			when c.age between 30 and 50 then 'Middle Aged (30-50)'
 		else 'Senior (Above 50)'
@@ -61,4 +67,3 @@ from(
 ) as sub
 group by sub.age_group
 order by average_spending desc;
-
