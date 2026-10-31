@@ -24,7 +24,7 @@ The SQL file contains the data cleaning, database design and all queries: [`mall
 | Detail | Info |
 |---|---|
 | **Source** | [Kaggle: Customer Shopping Dataset](https://www.kaggle.com/datasets/mehmettahiraslan/customer-shopping-dataset) |
-| **File used** | Cleaned version of `customer_shopping_data.csv` |
+| **File used** | Cleaned version of `customer_shopping_data.csv` (no total_amount column) |
 | **Rows** | 99,457 transactions |
 | **Period** | 2021 to 2023 |
 | **Malls** | 10 shopping malls across Istanbul |
@@ -56,17 +56,25 @@ The SQL file contains the data cleaning, database design and all queries: [`mall
 ## Database design
 The cleaned data was loaded into a SQL Server database with suitable data types and rules, for example age must be greater than 0 and customer_id cannot be empty.
 
-## Business questions and findings
+## Findings
 | # | Question | Answer |
 |---|---|---|
-| Q1 | What is the total revenue across all transactions? | To be added |
-| Q2 | Which product category generates the highest total revenue? | To be added |
-| Q3 | Which shopping mall has the most transactions? | To be added |
-| Q4 | Who are the top 10 customers by total amount spent? | To be added |
-| Q5 | What is the most popular payment method? | To be added |
-| Q6 | What is the average spending per transaction for each gender? | To be added |
-| Q7 | How many transactions were recorded each year? | To be added |
-| Q8 | Which age group spends the most on average? | To be added |
+| 1 | Total revenue | 68,551,365.91 TL |
+| 2 | Top category by revenue | Clothing 31.08M (45.3%), Shoes 18.14M (26.5%), Technology 15.77M (23.0%). These three make up 94.8% of revenue |
+| 3 | Mall with most transactions | Mall of Istanbul, 19,943 (Kanyon 19,823; Metrocity 15,011) |
+| 4 | Top 10 customers by spend | Not informative: every customer appears once, and 1,001 customers tie at the maximum of 5,250 TL |
+| 5 | Most popular payment method | Cash, 44,447 (44.7%); credit card 34,931 (35.1%); debit card 20,079 (20.2%) |
+| 6 | Average spend per transaction by gender | Male 690.92 TL, Female 688.14 TL (0.4% apart) |
+| 7 | Transactions per year | 2021: 45,382; 2022: 45,551; 2023: 8,524 (the data ends 8 March 2023, so 2023 is a partial year) |
+| 8 | Age group with highest average spend | Middle Aged (30-50) 691.76 TL; Young Adult (20-29) 691.72; Senior (Above 50) 687.88; Teen (Below 20) 663.13 |
+
+**Key takeaways**
+- Three of ten malls (Mall of Istanbul 13.9M, Kanyon 13.7M, Metrocity 10.2M) generate 55.2% of revenue. The five smallest earn 3.3M to 3.5M each.
+- Spend per transaction is almost identical across malls (about 674 to 705 TL), so the top malls win on transaction volume.
+
+**Data quality note:** while cleaning, I added a total_amount column (quantity x price). A sanity check showed the source price column already includes quantity, so total_amount overstated revenue by about 3.7x. I removed it, and all figures use price.
+
+**Limitations:** findings describe this dataset only. Several patterns are unusually uniform, which suggests the data may be simulated.
 
 ## Power BI dashboard
 The group built a Power BI dashboard as part of this project. My own rebuilt version is in progress and will be added here with screenshots.
